@@ -28,7 +28,7 @@ the libraries are in the stable version.
           Performs various actios when lifecycle state changes
         * [ViewModel](https://developer.android.com/topic/libraries/architecture/viewmodel) - Stores
           and manages UI-related data
-    * [Room](https://developer.android.com/training/data-storage/room) - Stores contact infromation 
+    * [Room](https://developer.android.com/training/data-storage/room) - Persists data fetched from the API 
     * [View Pager 2](https://developer.android.com/guide/navigation/navigation-swipe-view-2) - For creating scwipable screens like when onboarding
     * [Retrofit](https://github.com/square/retrofit) for making network calls.
 * Architecture
