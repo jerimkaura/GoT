@@ -3,13 +3,16 @@ package com.jerimkaura.got.presentation.characters
 import android.content.Context
 import android.content.SharedPreferences
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.google.firebase.auth.FirebaseAuth
 import com.jerimkaura.got.R
 import com.jerimkaura.got.databinding.FragmentHomeBinding
+import com.jerimkaura.got.presentation.auth.ProfileFragmentDirections
 import com.jerimkaura.got.presentation.continents.ContinentsAdapter
 import com.jerimkaura.got.presentation.viewmodel.CharactersViewModel
 import com.jerimkaura.got.presentation.viewmodel.ContinentsViewModel
@@ -75,6 +78,11 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
         }
     }
 
+    override fun onResume() {
+        super.onResume()
+        checkAuthenticationState()
+    }
+
     private fun getUserName(): String {
         val pref: SharedPreferences = requireActivity().getSharedPreferences(
             getString(R.string.profile_preference_key),
@@ -122,5 +130,16 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
         } else {
             firstName.plus(name.split("\\s".toRegex()).first()[1].toString()).uppercase()
         }
+    }
+
+    private fun checkAuthenticationState() {
+        val user = FirebaseAuth.getInstance().currentUser
+        if (user == null) {
+            val action = ProfileFragmentDirections.actionProfileFragmentToLoginFragment()
+            findNavController().navigate(action)
+        } else {
+            Log.e("TAG", "checkAuthenticationState")
+        }
+
     }
 }

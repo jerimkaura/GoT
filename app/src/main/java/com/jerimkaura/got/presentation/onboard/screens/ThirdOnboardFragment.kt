@@ -18,7 +18,7 @@ class ThirdOnboardFragment : Fragment(R.layout.fragment_third_onboard) {
 
         binding.btnNext.setOnClickListener {
             onBoardingFinished()
-            val action = ViewPagerFragmentDirections.actionViewPagerFragmentToProfileFragment()
+            val action = ViewPagerFragmentDirections.actionViewPagerFragmentToLoginFragment()
             findNavController().navigate(action)
         }
     }
@@ -27,5 +27,4 @@ class ThirdOnboardFragment : Fragment(R.layout.fragment_third_onboard) {
         val sharedPref = requireActivity().getSharedPreferences("onBoarding", Context.MODE_PRIVATE)
         sharedPref.edit().putBoolean("Finished", true).apply()
     }
-
 }

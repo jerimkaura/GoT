@@ -7,7 +7,7 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 
 @HiltViewModel
-class ContinentsViewModel @Inject constructor(private val repository: ContinentsRepository) :
+class ContinentsViewModel @Inject constructor(repository: ContinentsRepository) :
     ViewModel() {
     val continents = repository.getContinents().asLiveData()
 }
