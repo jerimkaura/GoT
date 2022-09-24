@@ -41,7 +41,7 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
 
         binding.btnSave.setOnClickListener {
             pref.edit()
-                .putString(getString(R.string.profile_name_key), name.text.toString())
+                .putString(getString(R.string.profile_name_key), name.text?.trim().toString())
                 .apply()
             val action = ProfileFragmentDirections.actionProfileFragmentToHomeFragment()
             findNavController().navigate(action)
